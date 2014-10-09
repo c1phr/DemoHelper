@@ -38,6 +38,7 @@
             this.CodeClips.Name = "CodeClips";
             this.CodeClips.Size = new System.Drawing.Size(259, 238);
             this.CodeClips.TabIndex = 0;
+            this.CodeClips.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CodeClips_MouseDoubleClick);
             // 
             // MainWindow
             // 
@@ -47,6 +48,7 @@
             this.Controls.Add(this.CodeClips);
             this.Name = "MainWindow";
             this.Text = "Demo Helper";
+            this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
 
         }
