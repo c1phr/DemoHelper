@@ -213,54 +213,65 @@ namespace DemoHelper
                 "Step 15",
                 @"return RedirectToAction(""Index"");"
             },
-            {
-                "Step 16",
-                @"try
-    {
-        if (ModelState.IsValid)
-        {
-            db.Students.Add(student);
-            db.SaveChanges();
-            return RedirectToAction(""Index"");
-        }
-    }
-    catch (DataException /* dex */)
-    {
-        //Log the error (uncomment dex variable name and add a line here to write a log.
-        ModelState.AddModelError("""", ""Unable to save changes. Try again, and if the problem persists see your system administrator."");
-    }"
-            },
+//            {
+//                "Step 16",
+//                @"try
+//    {
+//        if (ModelState.IsValid)
+//        {
+//            db.Students.Add(student);
+//            db.SaveChanges();
+//            return RedirectToAction(""Index"");
+//        }
+//    }
+//    catch (DataException /* dex */)
+//    {
+//        //Log the error (uncomment dex variable name and add a line here to write a log.
+//        ModelState.AddModelError("""", ""Unable to save changes. Try again, and if the problem persists see your system administrator."");
+//    }"
+//            },
 
-            {
-                "Step 17 Delete Args",
-                @"bool? saveChangesError=false"
-            },
-            {
-                "Step 17 after if (id == null){}",
-                @"if (saveChangesError.GetValueOrDefault())
-			{
-				ViewBag.ErrorMessage = ""Delete failed"";
-			}"
-            },
+//            {
+//                "Step 17 Delete Args",
+//                @"bool? saveChangesError=false"
+//            },
+//            {
+//                "Step 17 after if (id == null){}",
+//                @"if (saveChangesError.GetValueOrDefault())
+//			{
+//				ViewBag.ErrorMessage = ""Delete failed"";
+//			}"
+//            },
 
-            {
-                "Step 17 POST Delete",
-                @"RedirectToAction(""Delete"", new { id = id, saveChangesError = true });"
-            },
-            {
-                "Step 17 Under h2",
-                @"<p class=""error"">@ViewBag.ErrorMessage</p>"
-            },
-            {
-                "Step 18 Index.cshtml",
-                @"@using (Html.BeginForm())
-		{
-		    <p>
-		        Find by name: @Html.TextBox(""SearchString"")  
-		        <input type=""submit"" value=""Search"" />
-	        </p>
-		}"
-            },
+//            {
+//                "Step 17 POST Delete",
+//                @"try
+//    {
+//        Student student = db.Students.Find(id);
+//        db.Students.Remove(student);
+//        db.SaveChanges();
+//    }
+//    catch (DataException/* dex */)
+//    {
+//        //Log the error (uncomment dex variable name and add a line here to write a log.
+//        return RedirectToAction(""Delete"", new { id = id, saveChangesError = true });
+//    }
+//    return RedirectToAction(""Index"");"
+//            },
+//            {
+//                "Step 17 Under h2",
+//                @"<p class=""error"">@ViewBag.ErrorMessage</p>"
+//            },
+//            {
+//                "Step 18 Index.cshtml",
+//                @"@using (Html.BeginForm())
+//		{
+//		    <p>
+//		        Find by name: @Html.TextBox(""SearchString"")  
+//		        <input type=""submit"" value=""Search"" />
+//	        </p>
+//		}"
+//            },
             {
                 "Step 18 Index()",
                 @"var students = from s in db.Students select s;
