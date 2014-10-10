@@ -262,16 +262,16 @@ namespace DemoHelper
 //                "Step 17 Under h2",
 //                @"<p class=""error"">@ViewBag.ErrorMessage</p>"
 //            },
-//            {
-//                "Step 18 Index.cshtml",
-//                @"@using (Html.BeginForm())
-//		{
-//		    <p>
-//		        Find by name: @Html.TextBox(""SearchString"")  
-//		        <input type=""submit"" value=""Search"" />
-//	        </p>
-//		}"
-//            },
+            {
+                "Step 18 Index.cshtml",
+                @"@using (Html.BeginForm())
+		{
+		    <p>
+		        Find by name: @Html.TextBox(""SearchString"")  
+		        <input type=""submit"" value=""Search"" />
+	        </p>
+		}"
+            },
             {
                 "Step 18 Index()",
                 @"var students = from s in db.Students select s;
