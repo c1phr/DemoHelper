@@ -929,6 +929,11 @@ namespace DemoHelper
 		}"
             },
             {
+                "Step 38",
+                @"Sql(""INSERT INTO dbo.Department (Name, Budget, StartDate) VALUES ('Temp', 0.00, GETDATE())"");
+            AddColumn(""dbo.Course"", ""DepartmentID"", c => c.Int(nullable: false, defaultValue: 1));"
+            },
+            {
                 "Step 42 Before <th>",
                 @"<th>
             @Html.DisplayNameFor(model => model.CourseID)
