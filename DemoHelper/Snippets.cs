@@ -177,6 +177,13 @@ namespace DemoHelper
             },
 
             {
+                "Step 9",
+                @"<connectionStrings>
+    <add name=""SchoolContext"" connectionString=""Data Source=(LocalDB)\v11.0;Initial Catalog=MvcTraining;Integrated Security=SSPI;"" providerName=""System.Data.SqlClient""/>
+  </connectionStrings>"
+            },
+
+            {
                 "Step 14",
 
                 @"        <dt>
@@ -208,11 +215,20 @@ namespace DemoHelper
             },
             {
                 "Step 16",
-                @"		try{ ModelState.IsValid }
-		catch (DataException ex)
-		{
-			ModelState.AddModelError("""", ""Message"");
-		}"
+                @"try
+    {
+        if (ModelState.IsValid)
+        {
+            db.Students.Add(student);
+            db.SaveChanges();
+            return RedirectToAction(""Index"");
+        }
+    }
+    catch (DataException /* dex */)
+    {
+        //Log the error (uncomment dex variable name and add a line here to write a log.
+        ModelState.AddModelError("", ""Unable to save changes. Try again, and if the problem persists see your system administrator."");
+    }"
             },
 
             {
