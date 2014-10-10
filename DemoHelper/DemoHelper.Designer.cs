@@ -36,10 +36,12 @@
             this.CodeClips.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CodeClips.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CodeClips.FormattingEnabled = true;
+            this.CodeClips.ItemHeight = 18;
             this.CodeClips.Location = new System.Drawing.Point(-1, 0);
             this.CodeClips.Name = "CodeClips";
-            this.CodeClips.Size = new System.Drawing.Size(285, 264);
+            this.CodeClips.Size = new System.Drawing.Size(161, 112);
             this.CodeClips.TabIndex = 0;
             this.CodeClips.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CodeClips_MouseDoubleClick);
             // 
@@ -47,10 +49,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(160, 116);
             this.Controls.Add(this.CodeClips);
             this.Name = "MainWindow";
             this.Text = "Demo Helper";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.MainWindow_Load);
             this.ResumeLayout(false);
 
