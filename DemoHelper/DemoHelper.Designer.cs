@@ -33,10 +33,13 @@
             // 
             // CodeClips
             // 
+            this.CodeClips.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.CodeClips.FormattingEnabled = true;
-            this.CodeClips.Location = new System.Drawing.Point(13, 13);
+            this.CodeClips.Location = new System.Drawing.Point(-1, 0);
             this.CodeClips.Name = "CodeClips";
-            this.CodeClips.Size = new System.Drawing.Size(259, 238);
+            this.CodeClips.Size = new System.Drawing.Size(285, 264);
             this.CodeClips.TabIndex = 0;
             this.CodeClips.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.CodeClips_MouseDoubleClick);
             // 

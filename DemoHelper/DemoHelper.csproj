@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Snippets.cs" />
     <EmbeddedResource Include="DemoHelper.resx">
       <DependentUpon>DemoHelper.cs</DependentUpon>
     </EmbeddedResource>

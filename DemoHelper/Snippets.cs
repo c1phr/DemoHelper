@@ -9,8 +9,9 @@ namespace DemoHelper
 {
     static class Snippets
     {
-        public static Dictionary<string, string> clips = new Dictionary<string, string>() {
-{"Step 3", @"		using System;
+        public static Dictionary<string, string> clips = new Dictionary<string, string>()
+        {
+            {"Step 3", @"		using System;
 		using System.Collections.Generic;
 
 		namespace MvcTraining.Models
@@ -25,8 +26,9 @@ namespace DemoHelper
 		        public virtual ICollection<Enrollment> Enrollments { get; set; }
 		    }
 		}"},
-          {"Step 4",
-        @"using System;
+            {
+                "Step 4",
+                @"using System;
 		using System.Collections.Generic;
 		using System.Linq;
 		using System.Web;
@@ -48,10 +50,12 @@ namespace DemoHelper
 		        public virtual Course Course { get; set; }
 		        public virtual Student Student { get; set; }
 		    }
-		}"},
-          {"Step 5",
+		}"
+            },
+            {
+                "Step 5",
 
-        @"		using System.Collections.Generic;
+                @"		using System.Collections.Generic;
 		using System.ComponentModel.DataAnnotations.Schema;
 
 		namespace MvcTraining.Models
@@ -65,10 +69,12 @@ namespace DemoHelper
 
 		        public virtual ICollection<Enrollment> Enrollments { get; set; }
 		    }
-		}"},
+		}"
+            },
 
-        {"Step 6",
-        @"		using MvcTraining.Models;
+            {
+                "Step 6",
+                @"		using MvcTraining.Models;
 		using System.Data.Entity;
 		using System.Data.Entity.ModelConfiguration.Conventions;
 
@@ -85,11 +91,13 @@ namespace DemoHelper
 		        public DbSet<Enrollment> Enrollments { get; set; }
 		        public DbSet<Course> Courses { get; set; }
 		    }
-		}"},
+		}"
+            },
 
-          {"Step 7", 
-        
-        @"		using System;
+            {
+                "Step 7",
+
+                @"		using System;
 		using System.Collections.Generic;
 		using System.Linq;
 		using System.Web;
@@ -155,19 +163,23 @@ namespace DemoHelper
 		            context.SaveChanges();
 		        }
 		    }
-		}"},
+		}"
+            },
 
-          {"Step 8",
+            {
+                "Step 8",
 
-          @"	    <contexts>
+                @"	    <contexts>
 	      <context type=""MvcTraining.DAL.SchoolContext, MvcTraining"">
 	        <databaseInitializer type=""MvcTraining.DAL.SchoolInitializer, MvcTraining"" />
 	      </context>
-	    </contexts>"},
+	    </contexts>"
+            },
 
-          {"Step 14", 
+            {
+                "Step 14",
 
-        @"        <dt>
+                @"        <dt>
             @Html.DisplayNameFor(model => model.Enrollments)
         </dt>
         <dd>
@@ -188,16 +200,20 @@ namespace DemoHelper
                     </tr>
                 }
             </table>
-        </dd>"},
-              {"Step 15",
-        @"return RedirectToAction(""Index"");"
-        },
-        {"Step 16",
-        @"		try{ ModelState.IsValid }
+        </dd>"
+            },
+            {
+                "Step 15",
+                @"return RedirectToAction(""Index"");"
+            },
+            {
+                "Step 16",
+                @"		try{ ModelState.IsValid }
 		catch (DataException ex)
 		{
 			ModelState.AddModelError("""", ""Message"");
-		}"},
+		}"
+            },
 
             {
                 "Step 17 Delete Args",
@@ -218,21 +234,31 @@ namespace DemoHelper
             {
                 "Step 17 Under h2",
                 @"<p class=""error"">@ViewBag.ErrorMessage</p>"
-            }
-        
-        };
-
-        public static List<string> steps
-        {
-            get
+            },
             {
-                List<string> _steps = new List<string>();
-                for (int i = 0; i < clips.Length; i++)
-                {
-                    _steps.Add("Step " + i);
-                }
-                return _steps;
+                "Step 18 Index.cshtml",
+                @"@using (Html.BeginForm())
+		{
+		    <p>
+		        Find by name: @Html.TextBox(""SearchString"")  
+		        <input type=""submit"" value=""Search"" />
+	        </p>
+		}"
+            },
+            {
+                "Step 18 Index()",
+                @"var students = from s in db.Students select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students =
+                    students.Where(
+                        s =>
+                            s.LastName.ToUpper().Contains(searchString.ToUpper()) ||
+                            s.FirstMidName.ToUpper().Contains(searchString.ToUpper()));
             }
-        }
+            return View(students.ToList());"
+            }
+
+        };
     }
 }
