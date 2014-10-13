@@ -930,8 +930,8 @@ namespace DemoHelper
             },
             {
                 "Step 38",
-                @"Sql(""INSERT INTO dbo.Department (Name, Budget, StartDate) VALUES ('Temp', 0.00, GETDATE())"");
-            AddColumn(""dbo.Course"", ""DepartmentID"", c => c.Int(nullable: false, defaultValue: 1));"
+                @"Sql(""INSERT INTO dbo.Departments (Name, Budget, StartDate) VALUES ('Temp', 0.00, GETDATE())"");
+            AddColumn(""dbo.Courses"", ""DepartmentID"", c => c.Int(nullable: false, defaultValue: 1));"
             },
             {
                 "Step 42 Before <th>",
@@ -1094,6 +1094,95 @@ namespace DemoHelper
 
 		    </table>
 		}"
+            },
+            {
+                "Step 48",
+                @"public ActionResult Create()
+		{
+		   PopulateDepartmentsDropDownList();
+		   return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Create([Bind(Include = ""CourseID,Title,Credits,DepartmentID"")]Course course)
+		{
+		   try
+		   {
+		      if (ModelState.IsValid)
+		      {
+		         db.Courses.Add(course);
+		         db.SaveChanges();
+		         return RedirectToAction(""Index"");
+		      }
+		   }
+		   catch (RetryLimitExceededException /* dex */)
+		   {
+		      //Log the error (uncomment dex variable name and add a line here to write a log.)
+		      ModelState.AddModelError("""", ""Unable to save changes. Try again, and if the problem persists, see your system administrator."");
+		   }
+		   PopulateDepartmentsDropDownList(course.DepartmentID);
+		   return View(course);
+		}
+
+		public ActionResult Edit(int? id)
+		{
+		    if (id == null)
+		    {
+		        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+		    }
+		   Course course = db.Courses.Find(id);
+		    if (course == null)
+		    {
+		        return HttpNotFound();
+		    }
+		   PopulateDepartmentsDropDownList(course.DepartmentID);
+		   return View(course);
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Edit([Bind(Include = ""CourseID,Title,Credits,DepartmentID"")]Course course)
+		{
+		   try
+		   {
+		      if (ModelState.IsValid)
+		      {
+		         db.Entry(course).State = EntityState.Modified;
+		         db.SaveChanges();
+		         return RedirectToAction(""Index"");
+		      }
+		   }
+		   catch (RetryLimitExceededException /* dex */)
+		   {
+		      //Log the error (uncomment dex variable name and add a line here to write a log.)
+		      ModelState.AddModelError("""", ""Unable to save changes. Try again, and if the problem persists, see your system administrator."");
+		   }
+		   PopulateDepartmentsDropDownList(course.DepartmentID);
+		   return View(course);
+		}
+
+		private void PopulateDepartmentsDropDownList(object selectedDepartment = null)
+		{
+		   var departmentsQuery = from d in db.Departments
+		                          orderby d.Name
+		                          select d;
+		   ViewBag.DepartmentID = new SelectList(departmentsQuery, ""DepartmentID"", ""Name"", selectedDepartment);
+		}"
+            },
+            {
+                "Step 49",
+                @"<label class=""control-label col-md-2"" for=""DepartmentID"">Department</label>"
+            },
+            {
+                "Step 50",
+                @"<dt>
+			    @Html.DisplayNameFor(model => model.CourseID)
+			</dt>
+
+			<dd>
+			    @Html.DisplayFor(model => model.CourseID)
+			</dd>"
             }
 
         };
