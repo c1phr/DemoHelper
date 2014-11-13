@@ -16,6 +16,7 @@ namespace DemoHelper
         private void MainWindow_Load(object sender, EventArgs e)
         {            
             CodeClips.DataSource = Snippets.clips.Keys.ToArray();
+            this.TopMost = true;
         }
 
         private void CodeClips_MouseDoubleClick(object sender, MouseEventArgs e)
